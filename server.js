@@ -22,7 +22,7 @@ app.post("/refresh", (req, res) => {
     .refreshAccessToken()
     .then((data) => {
       console.log(data.body);
-      //spotifyApi.setAccessToken(data.body.access_token);
+      spotifyApi.setAccessToken(data.body.access_token);
     })
     .catch((err) => {
       console.log(err);
@@ -38,7 +38,6 @@ app.post("/login", (req, res) => {
     redirectUri: "http://localhost:3000",
   });
 
-  // .then() resolves the promise
   spotifyApi
     .authorizationCodeGrant(code)
     .then((data) => {
