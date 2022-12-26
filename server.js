@@ -2,7 +2,10 @@ const express = require("express");
 const SpotifyWebApi = require("spotify-web-api-node");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const axios = require("axios");
+const dotenv = require("dotenv");
 
+dotenv.config();
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -53,4 +56,13 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.listen(3001);
+app.get("/user", (req, res) => {
+  const spotifyApi = new SpotifyWebApi({
+    clientId: "fcecfc72172e4cd267473117a17cbd4d",
+    clientSecret: "a6338157c9bb5ac9c71924cb2940e1a7",
+    redirectUri: "http://www.example.com/callback",
+  });
+  axios.get();
+});
+
+app.listen(process.env.PORT || 3001);
