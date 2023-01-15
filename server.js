@@ -17,7 +17,7 @@ app.post("/refresh", (req, res) => {
   const spotifyApi = new SpotifyWebApi({
     clientId: "ea7be1d9b0224c26999adf7248f9fc41",
     clientSecret: "da9eeb82c33541d4aeec04283be9f2be",
-    redirectUri: "http://localhost:3000",
+    redirectUri: "http://localhost:3000/callback",
     refreshToken,
   });
 
@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
   const spotifyApi = new SpotifyWebApi({
     clientId: "ea7be1d9b0224c26999adf7248f9fc41",
     clientSecret: "da9eeb82c33541d4aeec04283be9f2be",
-    redirectUri: "http://localhost:3000",
+    redirectUri: "http://localhost:3000/callback",
   });
 
   spotifyApi
@@ -54,15 +54,6 @@ app.post("/login", (req, res) => {
       console.log(err);
       res.sendStatus(400);
     });
-});
-
-app.get("/user", (req, res) => {
-  const spotifyApi = new SpotifyWebApi({
-    clientId: "fcecfc72172e4cd267473117a17cbd4d",
-    clientSecret: "a6338157c9bb5ac9c71924cb2940e1a7",
-    redirectUri: "http://www.example.com/callback",
-  });
-  axios.get();
 });
 
 app.listen(process.env.PORT || 3001);
